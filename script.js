@@ -54,10 +54,33 @@ navbar.addEventListener('dblclick', function(){
   
 main.addEventListener('dblclick', function () {
   console.log("lol")
-  var link = document.createElement('link');
+  let link = document.createElement('link');
   link.rel = 'stylesheet';
   link.type = 'text/css';
   link.href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css";
   document.getElementsByTagName('HEAD')[0].appendChild(link);}
 )
+
+// Fonctionnalité 6 :
+// si un utilisateur passe sa souris
+//  sur le bouton "View" d'une card (n'importe laquelle), 
+//  celle - ci va se réduire.Cela veut dire que le texte
+//   disparaît, l'image n'apparaîtra qu'à 
+//   20 % de sa taille d'origine et les boutons
+//    "Edit" / "View" restent visibles.
+//    Cette fonction sera réversible:
+const viewBtn = document.getElementsByClassName('btn-success')
+const cardImage = document.getElementsByClassName('card-img-top')
+
+let reduceImage = function (cardImage) {
+  if (cardImage.style.width == "100%")
+  { cardImage.style.width = "20%"}
+  else { cardImage.style.width = "100%"}
+}
+
+for (let j = 0; j < cardImage.length; j++){
+  cardImage[j].style.width = "100%"
+  viewBtn[j].addEventListener("mouseover", function(){reduceImage(cardImage[j])})
+}
+
 
